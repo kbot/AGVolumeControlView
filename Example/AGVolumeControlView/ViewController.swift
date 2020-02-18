@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.setupViewController()
         // Do any additional setup after loading the view, typically from a nib.
+        volumeControl.setSliderProgress(value: 0.5)
     }
     
     override func didReceiveMemoryWarning() {

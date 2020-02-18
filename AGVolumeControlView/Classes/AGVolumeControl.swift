@@ -95,6 +95,13 @@ open class AGVolumeControl: UIControl {
     {
         return self.volumeControlSlider?.progressValue ?? 0.0
     }
+
+    public func setSliderProgress(value: CGFloat)
+    {
+        self.addVolumeControlSlider()
+        self.volumeControlSlider?.updateVolumeControlWith(newProgress: value)
+        sendActions(for: .valueChanged)
+    }
     
     public func updateDecibelsLevel (decibelsLevel : CGFloat)
     {

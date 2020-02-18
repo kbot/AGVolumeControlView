@@ -1,5 +1,5 @@
 PODS:
-  - AGVolumeControlView (0.2.0)
+  - AGVolumeControlView (0.2.2)
 
 DEPENDENCIES:
   - AGVolumeControlView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AGVolumeControlView: c8face0d64babad423287167f2b93e2d99f9a944
+  AGVolumeControlView: 122bd696130b97bc020e85a5f1dd42b84e8ebf9c
 
 PODFILE CHECKSUM: fd091dedd20f3ff168f1d66a05d8360009b1fab5
 

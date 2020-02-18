@@ -67,15 +67,13 @@ class AGVolumeControlSlider: AGVolumeControlDrawView {
         self.backgroundColor = UIColor.clear
     }
     
-    fileprivate func updateVolumeControl (newValue: CGFloat, touchPoint : CGPoint, progressValue : CGFloat, currentAngle : CGFloat, withTouch : Bool)
+    fileprivate func updateVolumeControl (newValue: CGFloat, progressValue : CGFloat, currentAngle : CGFloat)
     {
         let frameSize = CGSize(width: volumeControlRadius * 2, height: volumeControlRadius * 2)
         let circleBezierPath = self.updateCircleBezierPath(frameSize: frameSize,
                                                            newValue: newValue,
-                                                           touchPoint: touchPoint,
                                                            progressValue: progressValue,
-                                                           currentAngle: currentAngle,
-                                                           withTouch: withTouch)
+                                                           currentAngle: currentAngle)
         self.drawVolumeControl(size: frameSize, circlePath: circleBezierPath)
     }
     
@@ -203,12 +201,11 @@ extension AGVolumeControlSlider {
     
     fileprivate func updateVolumeControlWith (newValue : CGFloat, currentAngle : CGFloat, touchPosition : CGPoint)
     {
-        self.updateVolumeControl(newValue: newValue / 3, touchPoint: touchPosition, progressValue: self.progressValue, currentAngle: currentAngle, withTouch: true)
+        self.updateVolumeControl(newValue: newValue / 3, progressValue: self.progressValue, currentAngle: currentAngle)
         endPointValue = newValue
     }
-
     
-    fileprivate func updateCircleBezierPath(frameSize : CGSize, newValue: CGFloat, touchPoint : CGPoint, progressValue : CGFloat, currentAngle : CGFloat, withTouch : Bool) -> UIBezierPath {
+    fileprivate func updateCircleBezierPath(frameSize : CGSize, newValue: CGFloat, progressValue : CGFloat, currentAngle : CGFloat) -> UIBezierPath {
         self.removeSublayers()
         
         let circleBezierPath = UIBezierPath.init()
@@ -326,5 +323,14 @@ extension AGVolumeControlSlider {
                 layer.removeFromSuperlayer()
             }
         }
+    }
+
+    public func updateVolumeControlWith (newProgress : CGFloat)
+    {
+        self.currentAngle = AGVolumeControlMathHelper.rad(fromDegrees: 360 * newProgress)
+        self.progressValue = newProgress
+        self.updateVolumeControlWith(newValue: newProgress,
+                                     currentAngle: self.currentAngle,
+                                     touchPosition: CGPoint.zero)
     }
 }
