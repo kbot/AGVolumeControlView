@@ -50,26 +50,20 @@ open class AGVolumeControl: UIControl {
     /**
      * The radius of circle
      */
-    internal var radius: CGFloat {
-        get {
-            let radius =  min(self.center.x / 4, self.center.y / 4)
-            return radius
-        }
-    }
+    @IBInspectable
+    public var radius: CGFloat = 40.0
     
-    internal var volumeControlRadius: CGFloat {
-        get {
-            let radius =  min(self.center.x / 3.5, self.center.y / 3.5)
-            return radius
-        }
-    }
+    @IBInspectable
+    public var volumeControlRadius: CGFloat = 45.0
     
-    internal var maxVolumeHeight: CGFloat {
-        get {
-            let maxVolumeHeight = radius * 1.5
-            return maxVolumeHeight
-        }
-    }
+    @IBInspectable
+    public var maxVolumeHeight: CGFloat = 40.0 * 1.5
+
+    @IBInspectable
+    public var shouldDrawVolumeControlGradientBackground: Bool = true
+
+    @IBInspectable
+    public var shouldDrawVolumeControlLinearGradientBackground: Bool = true
     
     var volumeControlGradientBackground : AGVolumeControlGradientBackground? = nil
     
@@ -152,7 +146,7 @@ extension AGVolumeControl
 {
     fileprivate func addVolumeControlGradientBackground ()
     {
-        if (self.volumeControlGradientBackground == nil)
+        if (self.volumeControlGradientBackground == nil && self.shouldDrawVolumeControlGradientBackground)
         {
             self.volumeControlGradientBackground = AGVolumeControlGradientBackground.init(frame: self.bounds)
             self.volumeControlGradientBackground?.radius = self.radius
@@ -166,7 +160,7 @@ extension AGVolumeControl
     
     fileprivate func addVolumeControlLinearGradientBackground ()
     {
-        if (self.volumeControlLinearGradientBackground == nil)
+        if (self.volumeControlLinearGradientBackground == nil && self.shouldDrawVolumeControlLinearGradientBackground)
         {
             let minSize = min(self.frame.size.width, self.frame.size.width)
             let newSize = sqrt(pow(minSize, 2) + pow(minSize, 2))

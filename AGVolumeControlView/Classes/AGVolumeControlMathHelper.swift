@@ -39,7 +39,7 @@ internal extension CGVector {
 internal extension CGRect {
     
     // get the center of rect (bounds or frame)
-    internal var center: CGPoint {
+    var center: CGPoint {
         get {
             let center = CGPoint(x: midX, y: midY)
             return center
