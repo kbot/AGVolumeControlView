@@ -293,8 +293,8 @@ extension AGVolumeControlSlider {
         
         shapeLayer.fillColor = self.volumeControlColor.cgColor
         
-        shapeLayer.fillRule = kCAFillRuleEvenOdd
-        shapeLayer.lineJoin = kCALineJoinRound
+        shapeLayer.fillRule = .evenOdd
+        shapeLayer.lineJoin = .round
         shapeLayer.opacity = 1.0
         
         let shapeLayerBezier = UIBezierPath()
