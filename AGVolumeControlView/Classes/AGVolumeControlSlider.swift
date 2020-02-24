@@ -44,6 +44,7 @@ class AGVolumeControlSlider: AGVolumeControlDrawView {
         }
     }
 
+    public var customBackgroundColor: UIColor = .black
     public var thumbColor: UIColor = .white
 
     public var currentAngle : CGFloat = 0.0
@@ -89,7 +90,7 @@ class AGVolumeControlSlider: AGVolumeControlDrawView {
                       toAngle: AGVolumeControlMathHelper.circleMaxValue,
                       radius: (self.radius + self.maxVolumeHeight) * 1.1,
                       inContext: context,
-                      color: UIColor.black,
+                      color: self.customBackgroundColor,
                       mode: .fill)
         
         drawFilledArc(fromAngle: AGVolumeControlMathHelper.circleInitialAngle,

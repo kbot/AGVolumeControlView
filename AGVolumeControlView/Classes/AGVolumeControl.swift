@@ -194,6 +194,9 @@ extension AGVolumeControl
             self.volumeControlSlider?.maximumValue = self.maximumValue
             self.volumeControlSlider?.thumbColor = self.thumbColor
             self.volumeControlSlider?.thumbRadius = self.thumbRadius
+            if self.customBackgroundColor != nil {
+                self.volumeControlSlider?.customBackgroundColor = self.customBackgroundColor!
+            }
             self.volumeControlSlider?.isUserInteractionEnabled = false
             
             self.addSubview(self.volumeControlSlider!)
